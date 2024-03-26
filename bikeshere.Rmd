@@ -1,0 +1,79 @@
+---
+title: "bikeshare"
+author: "divi"
+date: "20 January 2024"
+output: html_document
+---
+```{r}
+bikeshare_data <- read.csv("raw data/bikeshare.csv",header = TRUE)
+str(bikeshare_data)
+```
+
+```{r}
+
+```
+```{r}
+unique(bikeshare_data$ season )
+```
+```{r}
+
+```
+
+```{r}
+summary(bikeshare_data $ rental)
+boxplot(bikeshare_data $ rental)
+```
+
+```{r}
+hist(bikeshare_data $ rental)
+```
+
+```{r}
+unique(bikeshare_data $ month[bikeshare_data$ season =="fall"])
+```
+
+
+```{r}
+unique(bikeshare_data $ month[bikeshare_data$ season =="winter"])
+```
+
+
+```{r}
+unique(bikeshare_data $ month[bikeshare_data$ season =="spring"])
+```
+
+
+```{r}
+unique(bikeshare_data $ month[bikeshare_data$ season =="summer"])
+```
+
+
+```{r}
+df <- data.frame( spring = rep (NA,3),
+                 summer = rep (NA,3),
+                 fall = rep (NA,3),
+                 winter = rep (NA,3))
+df
+```
+```{r}
+row.names(df)<-c("mean","median","IQR")
+df
+```
+
+```{r}
+vec<- c ("mean","median","IQR")
+vec
+```
+
+```{r}
+for (n in vec){
+  for (i in unique(bikeshare_data$ season))
+ {
+data1 <- get(n)
+res <- data1(bikeshare_data $ rental[bikeshare_data$ season == i])
+df[n,i] <- res
+  }
+}
+df
+```
+
